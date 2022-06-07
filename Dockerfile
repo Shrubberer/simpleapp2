@@ -4,6 +4,9 @@ MAINTAINER Markos <mail@mail.com>
 # Add repo file
 #ADD ./sander.repo /etc/yum.repos.d/
 
+# CentOS8 problems fix
+RUN dnf --disablerepo '*' --enablerepo=extras swap centos-linux-repos centos-stream-repos &&\
+    dnf distro-sync
 # Install cool software
 RUN yum --assumeyes update && \
 yum --assumeyes install \
